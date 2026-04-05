@@ -69,18 +69,15 @@
       "G": "Goku",
       "H": "Heatblast",
       "I": "Imperial",
-
       "J": "Jyggalag",
       "K": "Khajiit",
       "L": "Lodestar",
       "M": "Mechamorph",
       "N": "Namek",
       "O": "Omnitrix",
-
       "P": "Primus",
       "Q": "Quintesson",
       "R": "Ratchet",
-
       "S": "Saiyan",
       "T": "Tetramand",
       "U": "Unicron",
@@ -88,7 +85,7 @@
       "W": "Wabbajack",
       "X": "XLR8",
       "Y": "Yokuda",
-      "Z": "Zs'Skayr",
+      "Z": "Zs'Skayr"
     };
 
     input.addEventListener("input", updateOutput);
@@ -97,15 +94,15 @@
       output.value = translateToPhoneticAlphabet(input.value);
     }
 
-    function translateToPhoneticAlphabet(text) {
+    function translateLine(line) {
       let result = "";
       let i = 0;
 
-      while (i < text.length) {
+      while (i < line.length) {
         let matched = false;
 
         for (let emo of KEEP_AS_IS) {
-          if (text.startsWith(emo, i)) {
+          if (line.startsWith(emo, i)) {
             result += emo;
             i += emo.length;
             matched = true;
@@ -115,15 +112,7 @@
 
         if (matched) continue;
 
-        let char = text[i];
-
-        // Preserve line breaks and remove leading space before them
-        if (char === "\n") {
-          result = result.trimEnd();
-          result += "\n";
-          i++;
-          continue;
-        }
+        let char = line[i];
 
         if (char === " ") {
           result += "/ ";
@@ -150,6 +139,13 @@
       }
 
       return result.trimEnd();
+    }
+
+    function translateToPhoneticAlphabet(text) {
+      return text
+        .split(/\r?\n/)
+        .map(translateLine)
+        .join("\n");
     }
   </script>
 </body>
