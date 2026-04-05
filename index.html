@@ -117,7 +117,7 @@
 
         let char = text[i];
 
-        // Handle line breaks without leading space
+        // Preserve exact line breaks (including empty lines)
         if (char === "\n") {
           result = result.trimEnd();
           result += "\n";
@@ -149,7 +149,7 @@
         i++;
       }
 
-      return result.trim();
+      return result.trimEnd(); // only trim end so blank lines stay
     }
   </script>
 </body>
