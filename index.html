@@ -117,6 +117,14 @@
 
         let char = text[i];
 
+        // Handle line breaks without leading space
+        if (char === "\n") {
+          result = result.trimEnd();
+          result += "\n";
+          i++;
+          continue;
+        }
+
         if (char === " ") {
           result += "/ ";
           i++;
