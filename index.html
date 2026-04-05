@@ -57,6 +57,8 @@
     let input = document.getElementById("input");
     let output = document.getElementById("output");
 
+    const KEEP_AS_IS = [];
+
     const PHONETIC_ALPHABET = {
       "A": "Autobot",
       "B": "Ben",
@@ -87,7 +89,6 @@
       "X": "XLR8",
       "Y": "Yokuda",
       "Z": "Zs'Skayr",
-
     };
 
     input.addEventListener("input", updateOutput);
