@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Own Phonetic Alphabet Translator</title>
+  <title>Phonetic Alphabet Translator</title>
   <style>
     #input-form {
       margin-bottom: 20px;
@@ -13,7 +13,8 @@
     }
 
     textarea,
-    .output-box {
+    .output-box,
+    select {
       width: 800px;
       max-width: 2000px;
       min-width: 300px;
@@ -34,16 +35,28 @@
 
     .output-box {
       font-size: 15px;
-      font-family: Arial, sans-serif;
+    }
+
+    select {
+      height: auto;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
-  <h1>My own phonetic alphabet translator</h1>
+  <h1>Phonetic Alphabet Translator</h1>
 
   <div id="input-form">
     <label for="input">Enter text here</label>
     <textarea id="input"></textarea>
+  </div>
+
+  <div>
+    <label for="alphabet">Choose alphabet</label>
+    <select id="alphabet">
+      <option value="custom">My Phonetic Alphabet</option>
+      <option value="nato">NATO Phonetic Alphabet</option>
+    </select>
   </div>
 
   <div>
@@ -56,10 +69,11 @@
   <script>
     let input = document.getElementById("input");
     let output = document.getElementById("output");
+    let alphabetSelect = document.getElementById("alphabet");
 
     const KEEP_AS_IS = [];
 
-    const PHONETIC_ALPHABET = {
+    const CUSTOM_ALPHABET = {
       "A": "Autobot",
       "B": "Ben",
       "C": "Capsule",
@@ -88,13 +102,49 @@
       "Z": "Zs'Skayr"
     };
 
-    input.addEventListener("input", updateOutput);
+    const NATO_ALPHABET = {
+      "A": "Alpha",
+      "B": "Bravo",
+      "C": "Charlie",
+      "D": "Delta",
+      "E": "Echo",
+      "F": "Foxtrot",
+      "G": "Golf",
+      "H": "Hotel",
+      "I": "India",
+      "J": "Juliet",
+      "K": "Kilo",
+      "L": "Lima",
+      "M": "Mike",
+      "N": "November",
+      "O": "Oscar",
+      "P": "Papa",
+      "Q": "Quebec",
+      "R": "Romeo",
+      "S": "Sierra",
+      "T": "Tango",
+      "U": "Uniform",
+      "V": "Victor",
+      "W": "Whiskey",
+      "X": "X-ray",
+      "Y": "Yankee",
+      "Z": "Zulu"
+    };
 
-    function updateOutput() {
-      output.value = translateToPhoneticAlphabet(input.value);
+    input.addEventListener("input", updateOutput);
+    alphabetSelect.addEventListener("change", updateOutput);
+
+    function getSelectedAlphabet() {
+      return alphabetSelect.value === "nato"
+        ? NATO_ALPHABET
+        : CUSTOM_ALPHABET;
     }
 
-    function translateLine(line) {
+    function updateOutput() {
+      output.value = translateText(input.value);
+    }
+
+    function translateLine(line, alphabet) {
       let result = "";
       let i = 0;
 
@@ -127,7 +177,7 @@
         }
 
         let upperChar = char.toUpperCase();
-        let code = PHONETIC_ALPHABET[upperChar];
+        let code = alphabet[upperChar];
 
         if (code) {
           result += code + " ";
@@ -141,10 +191,12 @@
       return result.trimEnd();
     }
 
-    function translateToPhoneticAlphabet(text) {
+    function translateText(text) {
+      const alphabet = getSelectedAlphabet();
+
       return text
         .split(/\r?\n/)
-        .map(translateLine)
+        .map(line => translateLine(line, alphabet))
         .join("\n");
     }
   </script>
