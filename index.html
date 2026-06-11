@@ -13,34 +13,29 @@
     }
 
     textarea,
-.output-box {
-  width: 800px;
+    .output-box {
+      width: 800px;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      text-align: left;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      resize: both;
+      overflow: auto;
+      box-sizing: border-box;
+    }
 
-  height: 150px;
-
-  padding: 10px;
-  font-size: 16px;
-  text-align: left;
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
-
-  resize: both;
-  overflow: auto;
-  box-sizing: border-box;
-}
-
-select {
-  width: 800px;
-  max-width: 2000px;
-  min-width: 300px;
-
-  height: 35px; /* thinner */
-  padding: 5px;
-  font-size: 16px;
-
-  margin-bottom: 5px;
-  box-sizing: border-box;
-}
+    select {
+      width: 800px;
+      max-width: 2000px;
+      min-width: 300px;
+      height: 35px;
+      padding: 5px;
+      font-size: 16px;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -69,9 +64,9 @@ select {
   <p>Spaces are translated as <code>/</code>.</p>
 
   <script>
-    let input = document.getElementById("input");
-    let output = document.getElementById("output");
-    let alphabetSelect = document.getElementById("alphabet");
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+    const alphabetSelect = document.getElementById("alphabet");
 
     const KEEP_AS_IS = [];
 
@@ -155,7 +150,7 @@ select {
       "S": "Squirtle",
       "T": "Totodile",
       "U": "Unown",
-      "V": "Venusar",
+      "V": "Venusaur",
       "W": "Wobbuffet",
       "X": "Xatu",
       "Y": "Yanma",
@@ -195,11 +190,10 @@ select {
     alphabetSelect.addEventListener("change", updateOutput);
 
     function getSelectedAlphabet() {
-      return alphabetSelect.value === "nato"
-        ? NATO_ALPHABET
-        : CUSTOM_ALPHABET
-        : POKEMON_ALPHABET
-        : STAR_WARS_ALPHABET;
+      if (alphabetSelect.value === "nato") return NATO_ALPHABET;
+      if (alphabetSelect.value === "pokemon") return POKEMON_ALPHABET;
+      if (alphabetSelect.value === "starwars") return STAR_WARS_ALPHABET;
+      return CUSTOM_ALPHABET;
     }
 
     function updateOutput() {
@@ -255,6 +249,8 @@ select {
         .map(line => translateLine(line, alphabet))
         .join("\n");
     }
+
+    updateOutput();
   </script>
 </body>
 </html>
