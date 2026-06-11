@@ -131,13 +131,73 @@ select {
       "Z": "Zulu"
     };
 
+    const POKEMON_ALPHABET = {
+      "A": "Arbok",
+      "B": "Blastoise",
+      "C": "Charizard",
+      "D": "Diglett",
+      "E": "Eevee",
+      "F": "Flareon",
+      "G": "Gengar",
+      "H": "Haunter",
+      "I": "Ivysaur",
+      "J": "Jigglypuff",
+      "K": "Kakuna",
+      "L": "Lucario",
+      "M": "Mewtwo",
+      "N": "Natu",
+      "O": "Oddish",
+      "P": "Pikachu",
+      "Q": "Quagsire",
+      "R": "Rattata",
+      "S": "Squirtle",
+      "T": "Totodile",
+      "U": "Unown",
+      "V": "Venusar",
+      "W": "Wobbuffet",
+      "X": "Xatu",
+      "Y": "Yanma",
+      "Z": "Zubat"
+    };
+
+    const STAR_WARS_ALPHABET = {
+      "A": "Alderaan",
+      "B": "Bespin",
+      "C": "Coruscant",
+      "D": "Dagobah",
+      "E": "Ewok",
+      "F": "Force",
+      "G": "Gungan",
+      "H": "Hoth",
+      "I": "Imperial",
+      "J": "Jedi",
+      "K": "Kashyyyk",
+      "L": "Lightsaber",
+      "M": "Mandalorian",
+      "N": "Naboo",
+      "O": "Obi-Wan",
+      "P": "Padmé",
+      "Q": "Qui-Gon",
+      "R": "Republic",
+      "S": "Sith",
+      "T": "Tatooine",
+      "U": "Umbara",
+      "V": "Vader",
+      "W": "Wampa",
+      "X": "X-Wing",
+      "Y": "Yoda",
+      "Z": "Zabrak"
+    };
+
     input.addEventListener("input", updateOutput);
     alphabetSelect.addEventListener("change", updateOutput);
 
     function getSelectedAlphabet() {
       return alphabetSelect.value === "nato"
         ? NATO_ALPHABET
-        : CUSTOM_ALPHABET;
+        : CUSTOM_ALPHABET
+        : POKEMON_ALPHABET
+        : STAR_WARS_ALPHABET;
     }
 
     function updateOutput() {
