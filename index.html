@@ -186,6 +186,35 @@
       "Z": "Zabrak"
     };
 
+    const STAR_WARS_SPECIES_ALPHABET = {
+      "A": "Aing-Tii",
+      "B": "Bith",
+      "C": "Cerean",
+      "D": "Duros",
+      "E": "Ewok",
+      "F": "Firrerreo",
+      "G": "Gungan",
+      "H": "Hutt",
+      "I": "Ilwizzt",
+      "J": "Jawa",
+      "K": "Kiffar",
+      "L": "Lasat",
+      "M": "Mythrol",
+      "N": "Nautolan",
+      "O": "Ortolan",
+      "P": "Pantoran",
+      "Q": "Quermian",
+      "R": "Rodian",
+      "S": "Sullustan",
+      "T": "Twi'lek",
+      "U": "Umbaran",
+      "V": "Vulptereen",
+      "W": "Wookiee",
+      "X": "Xexto",
+      "Y": "Yuzzum",
+      "Z": "Zabrak"
+    };
+
     input.addEventListener("input", updateOutput);
     alphabetSelect.addEventListener("change", updateOutput);
 
@@ -193,6 +222,7 @@
       if (alphabetSelect.value === "nato") return NATO_ALPHABET;
       if (alphabetSelect.value === "pokemon") return POKEMON_ALPHABET;
       if (alphabetSelect.value === "starwars") return STAR_WARS_ALPHABET;
+      if (alphabetSelect.value === "swspecies") return STAR_WARS_SPECIES_ALPHABET;
       return CUSTOM_ALPHABET;
     }
 
