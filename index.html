@@ -49,6 +49,7 @@
       <option value="pokemon">Pokémon Phonetic Alphabet</option>
       <option value="starwars">Star Wars Phonetic Alphabet</option>
       <option value="swspecies">Star Wars Species Phonetic Alphabet</option>
+      <option value="star">Star Phonetic Alphabet</option>
     </select>
   </div>
 
@@ -216,6 +217,35 @@
       "Z": "Zabrak"
     };
 
+    const STAR_ALPHABET = {
+      "A": "Aldebaran",
+      "B": "Betelgeuse",
+      "C": "Canopus",
+      "D": "Deneb",
+      "E": "Elnath",
+      "F": "Fomalhaut",
+      "G": "Gacrux",
+      "H": "Hadar",
+      "I": "Izar",
+      "J": "Jabbah",
+      "K": "Kochab",
+      "L": "Lesath",
+      "M": "Mirfak",
+      "N": "Nunki",
+      "O": "Ogma",
+      "P": "Procyon",
+      "Q": "Qigong",
+      "R": "Rigel",
+      "S": "Sirius",
+      "T": "Thuban",
+      "U": "Unukalhai",
+      "V": "Vega",
+      "W": "Wezen",
+      "X": "Xihe",
+      "Y": "Yildun",
+      "Z": "Zubeneschamali"
+    };
+
     input.addEventListener("input", updateOutput);
     alphabetSelect.addEventListener("change", updateOutput);
 
@@ -224,6 +254,7 @@
       if (alphabetSelect.value === "pokemon") return POKEMON_ALPHABET;
       if (alphabetSelect.value === "starwars") return STAR_WARS_ALPHABET;
       if (alphabetSelect.value === "swspecies") return STAR_WARS_SPECIES_ALPHABET;
+      if (alphabetSelect.value === "star") return STAR_ALPHABET;
       return CUSTOM_ALPHABET;
     }
 
