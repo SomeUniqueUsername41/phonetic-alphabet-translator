@@ -51,6 +51,7 @@
       <option value="swspecies">Star Wars Species Phonetic Alphabet</option>
       <option value="star">Star Phonetic Alphabet</option>
       <option value="nation">Country Phonetic Alphabet</option>
+      <option value="digimon">Digimon Phonetic Alphabet</option>
     </select>
   </div>
 
@@ -276,6 +277,35 @@
       "Z": "Zambia"
     };
 
+    const DIGIMON_ALPHABET = {
+      "A": "Agumon",
+      "B": "Biyomon",
+      "C": "Calumon",
+      "D": "Devimon",
+      "E": "Etemon",
+      "F": "Falcomon",
+      "G": "Gabumon",
+      "H": "Hawkmon",
+      "I": "Impmon",
+      "J": "Justimon",
+      "K": "Kuwagamon",
+      "L": "Leomon",
+      "M": "MetalGreymon",
+      "N": "Nanomon",
+      "O": "Omnimon",
+      "P": "Patamon",
+      "Q": "Quantumon",
+      "R": "Renamon",
+      "S": "Seraphimon",
+      "T": "Tailmon",
+      "U": "Unimon",
+      "V": "Veemon",
+      "W": "WarGreymon",
+      "X": "Xrosmon",
+      "Y": "Yukimibotamon",
+      "Z": "Zudomon"
+    };
+
     input.addEventListener("input", updateOutput);
     alphabetSelect.addEventListener("change", updateOutput);
 
@@ -286,6 +316,7 @@
       if (alphabetSelect.value === "swspecies") return STAR_WARS_SPECIES_ALPHABET;
       if (alphabetSelect.value === "star") return STAR_ALPHABET;
       if (alphabetSelect.value === "nation") return NATION_ALPHABET;
+      if (alphabetSelect.value === "digimon") return DIGIMON_ALPHABET;
       return CUSTOM_ALPHABET;
     }
 
