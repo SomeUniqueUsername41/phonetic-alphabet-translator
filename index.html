@@ -46,6 +46,7 @@
     <select id="alphabet">
       <option value="custom">My own Phonetic Alphabet</option>
       <option value="nato">NATO Phonetic Alphabet</option>
+      <option value="animal">Animal Phonetic Alphabet</option>
       <option value="pokemon">Pokémon Phonetic Alphabet</option>
       <option value="starwars">Star Wars Phonetic Alphabet</option>
       <option value="swspecies">Star Wars Species Phonetic Alphabet</option>
@@ -130,6 +131,35 @@
       "X": "X-ray",
       "Y": "Yankee",
       "Z": "Zulu"
+    };
+
+    const ANIMAL_ALPHABET = {
+      "A": "Alligator",
+      "B": "Buffalo",
+      "C": "Cheetah",
+      "D": "Dolphin",
+      "E": "Elephant",
+      "F": "Falcon",
+      "G": "Gorilla",
+      "H": "Hippo",
+      "I": "Iguana",
+      "J": "Jaguar",
+      "K": "Kangaroo",
+      "L": "Leopard",
+      "M": "Monkey",
+      "N": "Narwhal",
+      "O": "Octopus",
+      "P": "Penguin",
+      "Q": "Quail",
+      "R": "Rabbit",
+      "S": "Scorpion",
+      "T": "Tiger",
+      "U": "Urial",
+      "V": "Vulture",
+      "W": "Walrus",
+      "X": "Xerus",
+      "Y": "Yak",
+      "Z": "Zebra"
     };
 
     const POKEMON_ALPHABET = {
@@ -311,6 +341,7 @@
 
     function getSelectedAlphabet() {
       if (alphabetSelect.value === "nato") return NATO_ALPHABET;
+      if (alphabetSelect.value === "animal") return ANIMAL_ALPHABET;
       if (alphabetSelect.value === "pokemon") return POKEMON_ALPHABET;
       if (alphabetSelect.value === "starwars") return STAR_WARS_ALPHABET;
       if (alphabetSelect.value === "swspecies") return STAR_WARS_SPECIES_ALPHABET;
